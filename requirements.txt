@@ -1,0 +1,2 @@
+streamlit
+pandas >= 1.2.4
