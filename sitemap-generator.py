@@ -27,15 +27,15 @@ get_csv = st.file_uploader("Upload CSV File",type=['csv'])
 
 if get_csv is not None:
     df = pd.read_csv(get_csv)
-
+	
     urls = df['Address'].tolist()
 	
 	urllist = "<?xml version='1.0' encoding='UTF-8'?>" + "\n"
     urllist += "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>" + "\n"
-
+	
     for i in urls:
       urllist += f"<url><loc>{i}</loc></url>" + "\n"
-
+	
     urllist += "</urlset>"
     
     def get_xml_download_link(filename):
@@ -43,7 +43,7 @@ if get_csv is not None:
             xml = f.read()
         b64 = base64.b64encode(xml.encode()).decode()
         return f'<a href="data:file/xml;base64,{b64}" download="{filename}">Download Sitemap XML file</a>'
-
+	
     open(filename, "w").write(urllist)
     st.write(":sunglasses: Sitemap Generation Successful :sunglasses:")
     st.markdown(get_xml_download_link(filename), unsafe_allow_html=True)
