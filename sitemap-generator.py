@@ -29,8 +29,9 @@ if get_csv is not None:
     df = pd.read_csv(get_csv)
 
     urls = df['Address'].tolist()
-
-    urllist = "<urlset xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd'>"
+	
+	urllist = "<?xml version='1.0' encoding='UTF-8'?>" + "\n"
+    urllist += "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>" + "\n"
 
     for i in urls:
       urllist += f"<url><loc>{i}</loc></url>" + "\n"
